@@ -53,4 +53,5 @@ public class user {
     private String tipo_usuario;
     
     
+    
 }

@@ -134,29 +134,58 @@ public class frmRegister extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String nombre =txtnombre.getText();
+        String nombre = txtnombre.getText();
         String email = txtemail.getText();
         String password = txtpassword.getText();
-        String tipousuario = comboseleccion.getSelectedItem().toString();
+        String tipoUsuario = comboseleccion.getSelectedItem().toString();
+    
+    if(nombre.isEmpty() || email.isEmpty() || password.isEmpty() || tipoUsuario.isEmpty()){
+        JOptionPane.showMessageDialog(null, "Debe ingresar los datos requeridos");
+    } else {
+        if(tipoUsuario.equalsIgnoreCase("Seleccionar")){
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de usuario");
+        } else {
+            if (save(nombre, email, password, tipoUsuario)) {
+                JOptionPane.showMessageDialog(null, "Se guardó correctamente");
+                limpiar();
+            } else {
+                JOptionPane.showMessageDialog(null, "No se pudo guardar el usuario");
+            }
+        }
+    }
+}        
+
+// Método para guardar el usuario en la base de datos
+    private boolean save(String nombre, String email, String password, String tipo_Usuario) {
+    boolean resultado = false;
+    
+    try {
+        // Debes tener el driver JDBC cargado y una conexión establecida
+        // Por ejemplo:
+        java.sql.Connection conexion = java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3308/citasmedicas", "root", "admin");
         
-        if(nombre.isEmpty() || email.isEmpty() || password.isEmpty() || tipousuario.isEmpty()){
-            JOptionPane.showMessageDialog(null, "Debe ingresar los datos requeridos");
-        }else{
-        if(tipousuario.equalsIgnoreCase("Seleccionar")){
-        JOptionPane.showMessageDialog(null, "Debe seleccionar un tipo de usuario");
-        }else{
-        try{
-            String consulta = "INSERT INTO usuario(nombre,email,password,tipo_nivel)VALUES('"+nombre+"','"+email+"','"+password+"','"+tipousuario+"')";
-            JOptionPane.showMessageDialog(null, "Se guardo correctamente");
-            limpiar();
-            
+        String query = "INSERT INTO usuario (Nombre, Email, Password, Tipo_Usuario) VALUES (?, ?, ?, ?)";
+        java.sql.PreparedStatement statement = conexion.prepareStatement(query);
         
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se ha guardado los datos"+e);
-            
+        statement.setString(1, nombre);
+        statement.setString(2, email);
+        statement.setString(3, password);
+        statement.setString(4, tipo_Usuario);
+        
+        int filasInsertadas = statement.executeUpdate();
+        if (filasInsertadas > 0) {
+            resultado = true;
         }
-        }
-        }
+        
+        statement.close();
+        conexion.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    
+    return resultado;
+        
     }//GEN-LAST:event_jButton1ActionPerformed
     void limpiar(){
     txtnombre.setText("");
