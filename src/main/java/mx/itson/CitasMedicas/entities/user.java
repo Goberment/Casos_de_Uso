@@ -40,17 +40,34 @@ public class user {
     }
 
     public String getTipo_usuario() {
-        return tipo_usuario;
+        return tipo_u;
     }
 
-    public void setTipo_usuario(String tipo_usuario) {
-        this.tipo_usuario = tipo_usuario;
+    public void setTipo_usuario(String tipo_u) {
+        this.tipo_u = tipo_u;
     }
     private int id;
     private String nombre;
     private String email;
     private String password;
-    private String tipo_usuario;
+    private String tipo_u;
+
+    public String getTipo_u() {
+        return tipo_u;
+    }
+
+    public void setTipo_u(String tipo_u) {
+        this.tipo_u = tipo_u;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+    private String edad;
     
     
     

@@ -10,7 +10,7 @@ package mx.itson.CitasMedicas.conexion;
  */
 public class Main {
     public static void main(String[]args){
-    Conexion objetoConexion = new Conexion();
+    conexion objetoConexion = new conexion();
     objetoConexion.estableceConexion();
     }
 }
