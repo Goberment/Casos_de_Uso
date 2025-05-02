@@ -54,7 +54,10 @@
                               <Component id="txtedad" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="comboseleccion" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="comboseleccion" alignment="1" min="-2" pref="118" max="-2" attributes="0"/>
+                              <Component id="btnRegistrarG" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -77,12 +80,15 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtnombre" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboseleccion" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnRegistrarG" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtemail" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtedad" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="txtedad" min="-2" max="-2" attributes="0"/>
+                      <Component id="comboseleccion" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtpassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -231,6 +237,14 @@
               </Border>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnRegistrarG">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Registrar con Google"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarGActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
